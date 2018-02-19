@@ -5,7 +5,6 @@ Wants=network-online.target
 After=network-online.target
 
 [Service]
-PermissionsStartOnly=true
 ExecStart=/usr/bin/motion
 User=motion
 Group=motion
