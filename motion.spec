@@ -1,6 +1,6 @@
 Name:		motion
-Version:	4.1.1
-Release:	1%{?dist}
+Version:	4.2.2
+Release:	0.1%{?dist}
 Summary:	Motion, a software motion detector. 
 
 Group:		Appications
@@ -11,6 +11,7 @@ Source1:	motion.service
 
 BuildRequires:	ffmpeg-devel
 BuildRequires:	libjpeg-turbo-devel
+BuildRequires:	libmicrohttpd-devel
 BuildRequires:	libzip-devel
 
 %description
