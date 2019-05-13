@@ -1,6 +1,6 @@
 Name:		motion
 Version:	4.2.2
-Release:	0.1%{?dist}
+Release:	0.2%{?dist}
 Summary:	Motion, a software motion detector. 
 
 Group:		Appications
@@ -10,6 +10,7 @@ Source0:	https://github.com/Motion-Project/motion/archive/release-%{version}.tar
 Source1:	motion.service
 
 BuildRequires:	ffmpeg-devel
+BuildRequires:	gettext
 BuildRequires:	libjpeg-turbo-devel
 BuildRequires:	libmicrohttpd-devel
 BuildRequires:	libzip-devel
@@ -29,19 +30,18 @@ exit 0
 %prep
 %setup -q -n motion-release-%{version}
 
-
 %build
 autoreconf -fiv
 %configure
 make %{?_smp_mflags}
 
-
 %install
 %make_install
 /bin/install -d %{buildroot}%{_exec_prefix}/lib/systemd/system/
 /bin/install -c %{SOURCE1} -m 644 %{buildroot}%{_exec_prefix}/lib/systemd/system/
+%find_lang %{name}
 
-%files
+%files -f %{name}.lang
 %doc README.md CHANGELOG COPYING CREDITS 
 %doc %{_docdir}/%{name}
 %{_mandir}/man1/motion.1.gz
